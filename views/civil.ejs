@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Civil Projects</title>
+    <link rel="stylesheet" href="css/allprojects.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <!-- for media query -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="100x100" href="images/favicon1.ico">
+  </head>
+  <body>
+    <!-- nav section begins************* -->
+          <section class="top-header"><!--display:flex-->
+
+            <div class="logo">
+              <a href="/">ProjecT</a>
+            </div>
+
+          <nav class="nav" id="list">
+
+        <ul class="nav-list" >
+              <li class="nav-item"><a href="/" class="nav-links">Home</a></li>
+              <li class="nav-item"><div class="nav-links" id="feedback">Feedback</div></li>
+              <li class="nav-item"><a href="#footer1" class="nav-links">Contact Us</a></li>
+              </ul>
+
+            </nav>
+
+
+
+            <div class="btn" id="acc_btn">
+              Get Started
+            </div>
+
+            <div class="accountadd-modal_container" id="account_modal">
+              <div class="accountadd_modal_body">
+                <div class="accountadd_modal_body_heading">
+                  ProjecT
+                </div>
+
+                <div class="permission">
+                  <p>Please read these Terms of Use
+                    carefully before using the
+                    <!-- http://www.ProjecT.com (change this) -->
+                    website application
+                    operated by us.
+                  </p>
+                  <div class="permission_heading">Termination</div>
+                  <p>
+                    We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
+                    All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.
+                  </p>
+                  <div class="permission_heading">Content</div>
+                  <p>
+                    We reserve the right, at our sole discretion, to
+                    modify or replace these Terms at any time. If a revision is material we will try to provide at least '30 business days' notice prior to any new terms taking effect. What constitutes a material
+                    change will be determined at our sole discretion.
+                  </p>
+                </div>
+
+                <div class="account_btn" id="acc-btn">
+                  <a href="/auth/google"><button class="Google"><img src="images/google-icon.svg" alt=""> <span class="button-title">Google</span></button></a>
+                  <a href=""><button class="fb"><img src="images/facebook-3.svg" alt=""><span class="button-title">Facebook</span></button></a>
+                </div>
+              </div>
+            </div>
+
+
+
+              <div class="icon col" id="bars-icon" onclick="openlist()">
+                <i class="fas fa-ellipsis-v"></i>
+              </div>
+              <div class="icon upward" id="upward-icon" onclick="closelist()">
+              <i class="fas fa-ellipsis-h"></i>
+              </div>
+          </section>
+    <!-- nav section over************* -->
+
+    <!-- Feedback modal -->
+    <div class="feedback-modal">
+      <div class="feedback-body">
+        <div class="feedback_heading">
+          <h3>Feedback</h3>
+        </div>
+
+        <form class="feedback-form" action="/feedback" method="POST">
+          <label>Email Id</label>
+          <input class="email-feed" type="email" name="email" required placeholder="Your email">
+            <br>
+          <label class="desc">Comment</label>
+          <textarea class="feed-desc" name="comment" required placeholder="Write here"></textarea>
+          <br>
+
+          <button type="submit" name="button"
+          id="feedback_submit"><i class="fas fa-thumbs-up"></i> Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+
+<section class="main">
+
+    <div class="topbar">
+      <ul class="topbar_list">
+        <li class="topbar_items"><a href="/cse" class="topbar_links">
+                <div class="body">
+        <i class="fas fa-laptop-code"></i>
+        <p><span class="branches">CSE</span> </p>
+      </div>
+
+        </a>
+      </li>
+        <li class="topbar_items active"><a href="" class="topbar_links">
+
+          <div class="body">
+            <i class="fas fa-archway"></i>
+            <p><span class="branches">CIVIL</span> </p>
+          </div>
+
+        </a>
+      </li>
+        <li class="topbar_items"><a href="/me" class="topbar_links">
+
+          <div class="body">
+            <i class="fas fa-truck-monster"></i>
+            <p><span class="branches">ME</span> </p>
+          </div>
+
+        </a>
+      </li>
+        <li class="topbar_items"><a href="/ee" class="topbar_links">
+
+          <div class="body">
+            <i class="fas fa-bolt"></i>
+            <p><span class="branches">EE</span> </p>
+          </div>
+
+        </a>
+      </li>
+        <li class="topbar_items"><a href="/ec" class="topbar_links">
+
+          <div class="body">
+            <i class="fas fa-satellite-dish"></i>
+            <p><span class="branches">EC</span> </p>
+          </div>
+
+        </a>
+      </li>
+      </ul>
+    </div>
+
+    <div class="main_content">
+
+    <div class="main_content_heading">
+      <h3>Civil</h3></div>
+      <ul class="main_content_list">
+        <%project.forEach(function(user){%>
+        <%if(user.trade === "Civil"){%>
+        <li class="main_content_item">
+        <a href="/description/<%=user._id%>" class="main_content_links" target="_blank"><%=user.p_name%></a>
+       </li>
+       <%}%>
+      <%})%>
+      </ul>
+
+
+    </div>
+
+</section>
+
+    <!-- footer section begins -->
+
+    <section class="footer" id="footer1">
+      <div class="footer-content">
+      <div class="aboutus">
+          <div class="aboutus__heading">
+          Our Mission
+          </div>
+          <div class="aboutus__para">
+            <p>This website is made for educational purpose
+              and aims to inculcate the seed of learning in students
+            through its implementation on projects.</p>
+          </div>
+      </div>
+
+    <div class="social_links">
+      <div class="social_links__heading">
+      Social Links
+    </div>
+
+
+      <div class="social_links_icon">
+        <ul class="footer__list">
+        <li class="footer__item"><a href="mailto:project.2020@rediffmail.com" class="footer__link social__footer__links gm"><i class="far fa-envelope"></i></a>
+        <li class="footer__item"><a href="https://www.facebook.com/ProjecT-102077181521720/?modal=admin_todo_tour" class="footer__link social__footer__links fb"><i class="fab fa-facebook-f"></i></a>
+        <li class="footer__item"><a href="https://twitter.com/ProjecT__2020" class="footer__link social__footer__links lin"><i class="fab fa-twitter"></i></a>
+        </ul>
+      </div>
+    </div>
+      <div class="footer__end">
+        <div class="footer__heading">
+        Quick Links
+        </div>
+        <ul class="footer__list">
+          <li class="footer__item"><a href="/about_us" class="footer__link footer__footer__links au">About Us</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+    <div class="copyright">
+
+      <span class="copyright__heading">ProjecT</span>
+      <span class="copyright__para">&#169; Copyright</span>
+    </div>
+
+    </section>
+
+
+
+    <!-- footer section over -->
+
+        <script src="js/home.js" charset="utf-8"></script>
+  </body>
+</html>

@@ -1,0 +1,389 @@
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title><%=ename.name%></title>
+    <link rel="stylesheet" href="css/afterlogin.css">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    <!-- for media query -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="100x100" href="images/favicon1.ico">
+  </head>
+
+  <body>
+
+
+    <!-- nav section begins************* -->
+    <section class="top-header">
+      <!--display:flex-->
+
+      <div class="logo">
+        <a href="/">ProjecT</a>
+      </div>
+
+      <nav class="nav" id="list">
+
+        <ul class="nav-list">
+          <li class="nav-item"><a href="/" class="nav-links">Home</a></li>
+          <li class="nav-item"><div class="nav-links" id="feedback">Feedback</div></li>
+          <li class="nav-item"><a href="#footer1" class="nav-links">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="icon" id="bars-icon" onclick="openlist()">
+        <i class="fas fa-ellipsis-v"></i>
+      </div>
+      <div class="icon upward" id="upward-icon" onclick="closelist()">
+        <i class="fas fa-ellipsis-h"></i>
+      </div>
+
+      <!-- Feedback modal -->
+      <div class="feedback-modal">
+        <div class="feedback-body">
+          <div class="feedback_heading">
+            <h3>Feedback</h3>
+          </div>
+
+          <form class="feedback-form" action="/feedback" method="POST">
+            <label>Email Id</label>
+            <input class="email-feed" type="email" name="email" required value="<%=ename.username%>" readonly placeholder="Your email">
+              <br>
+            <label class="desc">Comment</label>
+            <textarea class="feed-desc" name="comment" required placeholder="Write here"></textarea>
+            <br>
+
+            <button type="submit" name="button"
+            id="feedback_submit"><i class="fas fa-thumbs-up"></i> Submit
+            </button>
+          </form>
+        </div>
+      </div>
+
+
+
+
+      <!-- user modal begins *********************************************-->
+         <div class="login">
+           <div class="login-icon" id="toggle_login">
+             <i class="fas fa-bars"></i>
+           </div>
+
+           <div class="loginbar" id="login_bar">
+             <div class="login_content">
+               <i class="far fa-user"></i>
+               <h1>Hi, <%=ename.firstname%></h1>
+               <p><%=ename.username%></p>
+             </div>
+             <div class="login_options">
+               <ul class="login_list">
+                 <li class="login_item" id="open-button">
+                   <div class="login-btn">
+                     <i class="fas fa-archive"></i> Archive
+                   </div>
+                 </li>
+                 <li class="login_item">
+                   <div class="login-btn" id="form_button">
+                     <i class="fas fa-file"></i> New File
+                   </div>
+                 </li>
+
+                 <li class="login_item">
+                   <div class="login-btn">
+                     <a href="/logout"><i class="fas fa-sign-out-alt"></i> SignOut </a>
+                   </div>
+                 </li>
+               </ul>
+             </div>
+
+           </div>
+         </div>
+         <!-- user- modal over********************************************** -->
+
+
+
+
+         <!-- *************modal-archive-begins**************** -->
+
+
+               <div class="modal-bg" id="modal-container">
+                 <div class="modal_dialog">
+                   <div class="header">
+                     <h3><i class="fas fa-archive"></i> Archive</h3>
+                     <div class="closebtn" id="close_btn">&times;</div>
+                   </div>
+
+                   <div class="content">
+                     <ul>
+                       <%  userswithfile.forEach(function(user){  %>
+                       <li>
+                         <div class="project-list">
+                           <a href="/description/<%=user._id%>"> <span class="content-heading"><%=user.p_name%></span></a>
+                           <!--options menu begins-->
+                           <div class="options-menu">
+                             <i class="options-menu__button fas fa-ellipsis-v" role="button"></i>
+                             <ul class="options-menu__list">
+                               <li class="options-menu__list-item">
+                                 <a href="/edit_form/<%=user._id%>" class="options-menu__list-link" id="edit_menu-btn" role="button">Edit</a>
+                               </li>
+                               <li class="options-menu__list-item">
+                               <a href="/delete/<%=user._id%>" class="options-menu__list-link" id="remove_btn">Remove</a>
+                             </li>
+                             </ul>
+                           </div>
+                         </div>
+                       </li>
+                     <%})%>
+                     </ul>
+                   </div>
+                 </div>
+               </div>
+
+
+
+
+         <!-- modal-form-begins********************************** -->
+
+         <div class="modal-bg-form" id='modal_form-container'>
+
+           <div class="modal_form_body">
+
+             <div class="form_heading">
+               <h3 class="form-heading"><i class="fas fa-file"></i> New Project</h3>
+             </div>
+
+             <form class="project_form" action="/afterlogin" method="POST" enctype="multipart/form-data">
+               <p>
+                 <label>Project Name</label>
+                 <input type="text" id="name" name="p_name" required placeholder="Name of project">
+               </p>
+
+               <p>
+                 <label class="branch-head">Trade:</label>
+                 <select class="branch" name="trade" id="mySelect" required>
+                   <!-- to prevent initially no option from being selected -->
+                   <option>Computer Science</option>
+                   <option>Civil</option>
+                   <option>Mechanical</option>
+                   <option>Electrical</option>
+                   <option>Electronics & Communication</option>
+                 </select>
+               </p>
+
+               <!-- Description -->
+               <p>
+                 <label class="desc">Description:</label>
+                 <textarea type="textarea" id="message" name="description" required placeholder="Write here" maxlength="10000" rows="5"></textarea>
+                 <br>
+                 <div class="rules">
+                 Please make sure your file has following things :
+                   <ul>
+                     <li>* Hardware Required</li>
+                     <li>* Software Required</li>
+                     <li>* Procedure</li>
+                     <li>* References</li>
+                   </ul>
+
+                 </div>
+                 <label>Upload file(for detailed explanation) :</label>
+                 <input class="desc_input" type="file" name="file" required>
+                 <br>
+                 <!--project submit button*****************************-->
+                 <button type="submit" name="button" id="form_submit">Submit
+                 </button>
+                  </form>
+               </div>
+
+
+               <!--project submitted modal*******************************/-->
+    <!--        <div class="form_submit_modal" id="submit_modal">
+           <div class="form_submit_modal_body">
+           <div class="submit_heading">
+              <h3>ProjecT</h3>
+            </div>
+
+       <h4>Your project has been successfully submitted.</h4>
+
+           </div>
+       </div>  -->
+               <!--project submitted modal*******************************/-->
+
+
+
+
+   <!-- modal-form-over ****************************************-->
+
+
+
+       </section>
+
+    </section>
+
+
+    <div class="remove_modal">
+      <div class="remove_modal-body">
+
+      <div class="remove_heading">
+        <h3>ProjecT</h3>
+      </div>
+
+      <p>Your project has been removed successfully!</p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+    <!-- nav section over************* -->
+
+    <!-- /*hero section begins**************-->
+    <section class="hero">
+      <div class="hero__heading">
+        <h2>ProjecT</h2>
+        <p>
+          You'll think we'll help
+        </p>
+      </div>
+
+
+      <div class="btn hero__btn">
+        <a href="/cse">Know More</a>
+      </div>
+
+    </section>
+
+    <!-- /* hero section over**************-->
+
+
+    <!-- /* hero section over**************-->
+
+    <!-- main section begins************* -->
+    <main class="content">
+
+
+      <!-- /* description section begins */ -->
+
+      <section class="description">
+
+        <div class="desc__heading">
+          Why ProjecT?
+        </div>
+        <div class="desc__para">
+          <i class="fas fa-quote-left"></i>
+          <p>
+            <span>ProjecT</span> is designed to help you know about different types of
+            project that can be built in your branch. It allows you to interact
+            with the creator of the project if you get stuck in some phase of your
+            project designing.
+            You can also share your project on <span>ProjecT</span> for others to get benefitted
+            out of your project.<br>
+
+          </p>
+          <i class="fas fa-quote-right"></i>
+        </div>
+
+      </section>
+
+      <!-- /* description section over */ -->
+
+      <!-- features section begins************* -->
+
+      <section class="features">
+        <div class="feat__para">
+
+          <div class="feat__heading">
+            Features of ProjecT
+          </div>
+
+          <div class="feat__content">
+            <i class="fas fa-brain">
+              <p>
+                Comprehendible
+              </p>
+            </i>
+
+            <i class="fab fa-slideshare">
+              <p>
+                Interactive
+              </p>
+            </i>
+
+            <i class="fas fa-box-open">
+              <p>
+                Archive
+              </p>
+            </i>
+
+          </div>
+
+        </div>
+
+      </section>
+      <!-- features section over************* -->
+
+    </main>
+
+    <!-- main section over************* -->
+
+    <!-- footer section begins -->
+
+    <section class="footer" id="footer1">
+      <div class="footer-content">
+        <div class="aboutus">
+          <div class="aboutus__heading">
+            Our Mission
+          </div>
+          <div class="aboutus__para">
+            <p>This website is made for educational purpose
+              and aims to inculcate the seed of learning in students
+              through its implementation on projects.</p>
+          </div>
+        </div>
+
+        <div class="social_links">
+          <div class="social_links__heading">
+            Social Links
+          </div>
+
+
+          <div class="social_links_icon">
+            <ul class="footer__list">
+              <li class="footer__item"><a href="mailto:project.2020@rediffmail.com" class="footer__link social__footer__links gm"><i class="far fa-envelope"></i></a>
+              <li class="footer__item"><a href="https://www.facebook.com/ProjecT-102077181521720/?modal=admin_todo_tour" class="footer__link social__footer__links fb"><i class="fab fa-facebook-f"></i></a>
+              <li class="footer__item"><a href="https://twitter.com/ProjecT__2020" class="footer__link social__footer__links lin"><i class="fab fa-twitter"></i></a>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__end">
+          <div class="footer__heading">
+            Quick Links
+          </div>
+          <ul class="footer__list">
+            <li class="footer__item"><a href="/about_us" class="footer__link footer__footer__links au">About Us</a></li>
+          </ul>
+        </div>
+
+
+      </div>
+      <div class="copyright">
+
+        <span class="copyright__heading">ProjecT</span>
+        <span class="copyright__para">&#169; Copyright</span>
+      </div>
+
+    </section>
+
+
+
+    <!-- footer section over -->
+    <script src="js/afterlogin.js" charset="utf-8">
+
+    </script>
+  </body>
+
+  </html>

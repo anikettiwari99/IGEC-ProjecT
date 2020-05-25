@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Edit details</title>
+  <link rel="stylesheet" href="/css/edit_form.css"/>
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="icon" sizes="100x100" href="/images/favicon1.ico"/>
+</head>
+<body>
+      <!-- nav section begins************* -->
+      <section class="top-header">
+        <!--display:flex-->
+
+        <div class="logo">
+          <a href="/">ProjecT</a>
+        </div>
+
+        <nav class="nav" id="list">
+
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/" class="nav-links">Home</a></li>
+            <li class="nav-item"><div class="nav-links" id="feedback">Feedback</div></li>
+            <li class="nav-item"><a href="#footer1" class="nav-links">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <div class="icon" id="bars-icon" onclick="openlist()">
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+        <div class="icon upward" id="upward-icon" onclick="closelist()">
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+
+        <!-- Feedback modal -->
+        <div class="feedback-modal">
+          <div class="feedback-body">
+            <div class="feedback_heading">
+              <h3>Feedback</h3>
+            </div>
+
+            <form class="feedback-form" action="/feedback" method="POST">
+              <label>Email Id</label>
+              <input class="email-feed" type="email" name="email" required placeholder="Your email">
+                <br>
+              <label class="desc">Comment</label>
+              <textarea class="feed-desc" name="comment" required placeholder="Write here"></textarea>
+              <br>
+
+              <button type="submit" name="button"
+              id="feedback_submit"><i class="fas fa-thumbs-up"></i> Submit
+              </button>
+              </button>
+            </form>
+          </div>
+        </div>
+
+</section>
+
+        <!-- modal-form-begins********************************** -->
+
+
+
+          <div class="modal_form_body">
+
+            <div class="form_heading">
+              <h3 class="form-heading"><i class="fas fa-edit"></i> Edit Project</h3>
+            </div>
+
+            <form class="project_form" action="/update/" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="id" value="<%=data._id%>">
+              <p>
+                <label>Project Name</label>
+                <input type="text" id="name" name="p_name" value="<%=data.p_name%>" required placeholder="Name of project">
+              </p>
+
+              <p>
+                <label class="branch-head">Trade:</label>
+                <select class="branch" name="trade" id="mySelect" required>
+                  <!-- to prevent initially no option from being selected -->
+                  <option value="Computer Science" <% if(data.trade == "Computer Science"){ %> selected <% } %>> Computer Science</option>
+                  <option value="Civil" <% if(data.trade == "Civil"){ %> selected <% } %>> Civil</option>
+                  <option value="Mechanical" <% if(data.trade == "Mechanical"){ %> selected <% } %>>Mechanical</option>
+                  <option value="Electrical" <% if(data.trade == "Electrical"){ %> selected <% } %>>Electrical</option>
+                  <option value="Electronics & Communication" <% if(data.trade == "Electronics & Communication"){ %> selected <% } %>>Electronics & Communication</option>
+                </select>
+              </p>
+
+              <!-- Description -->
+              <p>
+                <label class="desc">Description:</label>
+                <textarea type="textarea" id="message" name="description" required placeholder="Write here" maxlength="10000" rows="5"><%=data.description%></textarea>
+                <br>
+                <div class="rules">
+                Please make sure your file has following things :
+                  <ul>
+                    <li>* Hardware Required</li>
+                    <li>* Software Required</li>
+                    <li>* Procedure</li>
+                    <li>* References</li>
+                  </ul>
+
+                </div>
+                <label>Upload file(for detailed explanation) :</label>
+                <input class="desc_input" type="file" name="file">
+                <br>
+                <!--project submit button*****************************-->
+                <button type="submit" name="button" id="form_submit">Submit
+                </button>
+                 </form>
+</div>
+
+              <!--project submitted modal*******************************/-->
+    <!--      <div class="form_submit_modal" id="submit_modal">
+          <div class="form_submit_modal_body">
+          <div class="submit_heading">
+             <h3>ProjecT</h3>
+           </div>
+
+      <h4>Your project has been successfully submitted in our database</h4>
+
+          </div>
+      </div>  -->
+              <!--project submitted modal*******************************/-->
+
+
+
+              <!-- footer section begins -->
+
+              <section class="footer" id="footer1">
+                <div class="footer-content">
+                  <div class="aboutus">
+                    <div class="aboutus__heading">
+                      Our Mission
+                    </div>
+                    <div class="aboutus__para">
+                      <p>This website is made for educational purpose
+                        and aims to inculcate the seed of learning in students
+                        through its implementation on projects.</p>
+                    </div>
+                  </div>
+
+                  <div class="social_links">
+                    <div class="social_links__heading">
+                      Social Links
+                    </div>
+
+
+                    <div class="social_links_icon">
+                      <ul class="footer__list">
+                        <li class="footer__item"><a href="mailto:project.2020@rediffmail.com" class="footer__link social__footer__links gm"><i class="far fa-envelope"></i></a>
+                        <li class="footer__item"><a href="https://www.facebook.com/ProjecT-102077181521720/?modal=admin_todo_tour" class="footer__link social__footer__links fb"><i class="fab fa-facebook-f"></i></a>
+                        <li class="footer__item"><a href="https://twitter.com/ProjecT__2020" class="footer__link social__footer__links lin"><i class="fab fa-twitter"></i></a>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="footer__end">
+                    <div class="footer__heading">
+                      Quick Link
+                    </div>
+                    <ul class="footer__list">
+                      <li class="footer__item"><a href="/about_us" class="footer__link footer__footer__links au">About Us</a></li>
+                      </ul>
+                  </div>
+
+
+                </div>
+                <div class="copyright">
+
+                  <span class="copyright__heading">ProjecT</span>
+                  <span class="copyright__para">&#169; Copyright</span>
+                </div>
+</section>
+        <script src="/js/edit_form.js"/ charset="utf-8"></script>
+</body>
+</html>

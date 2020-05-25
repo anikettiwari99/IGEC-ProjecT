@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title><%=pdetail.p_name%></title>
+  <link rel="stylesheet" href="/css/description.css"/>
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <!-- for media query -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" sizes="100x100" href="/images/favicon1.ico"/>
+</head>
+
+<body>
+  <!-- nav section begins************* -->
+  <section class="top-header">
+    <!--display:flex-->
+    <div class="logo">
+      <a href="/">ProjecT</a>
+    </div>
+
+    <nav class="nav" id="list">
+
+      <ul class="nav-list">
+        <li class="nav-item"><a href="/" class="nav-links">Home</a></li>
+        <li class="nav-item"><div class="nav-links" id="feedback">Feedback</div></li>
+        <li class="nav-item"><a href="#footer1" class="nav-links">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="btn">
+      <a href="">Get Started</a>
+    </div>
+
+
+    <div class="icon col" id="bars-icon" onclick="openlist()">
+      <i class="fas fa-ellipsis-v"></i>
+    </div>
+    <div class="icon upward" id="upward-icon" onclick="closelist()">
+      <i class="fas fa-ellipsis-h"></i>
+    </div>
+  </section>
+  <!-- nav section over************* -->
+
+  <!-- Feedback modal -->
+  <div class="feedback-modal">
+    <div class="feedback-body">
+      <div class="feedback_heading">
+        <h3>Feedback</h3>
+      </div>
+
+      <form class="feedback-form" action="/feedback" method="POST">
+        <label>Email Id</label>
+        <input class="email-feed" type="email" name="email" required placeholder="Your email">
+          <br>
+        <label class="desc">Comment</label>
+        <textarea class="feed-desc" name="comment" required placeholder="Write here"></textarea>
+        <br>
+
+        <button type="submit" name="button"
+        id="feedback_submit"><i class="fas fa-thumbs-up"></i> Submit
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- main section begins -->
+  <section class="main">
+    <input type="hidden" name="id" value="<%=pdetail._id%>">
+
+    <div class="main_heading">
+      <%=pdetail.p_name%>
+    </div>
+
+    <div class="main_content">
+      <div class="intro">
+        <%=pdetail.description%>
+      </div>
+
+
+      <!-- pdf download -->
+      <a href="/uploads/<%=pdetail.file%>" download_url="./uploads/<%=pdetail.file%>" download>
+        <button type="button" class="download_file btn"><i class="fas fa-file-download"> Download</i></button>
+      </a>
+    </div>
+  </section>
+
+  <!-- main section over -->
+
+
+
+
+  <!-- footer section begins -->
+
+  <section class="footer" id="footer1">
+    <div class="footer-content">
+      <div class="aboutus">
+        <div class="aboutus__heading">
+          Our Mission
+        </div>
+        <div class="aboutus__para">
+          <p>This website is made for educational purpose
+            and aims to inculcate the seed of learning in students
+            through its implementation on projects.</p>
+        </div>
+      </div>
+
+      <div class="social_links">
+        <div class="social_links__heading">
+          Social Links
+        </div>
+
+
+        <div class="social_links_icon">
+          <ul class="footer__list">
+            <li class="footer__item"><a href="mailto:project.2020@rediffmail.com" class="footer__link social__footer__links gm"><i class="far fa-envelope"></i></a>
+            <li class="footer__item"><a href="https://www.facebook.com/ProjecT-102077181521720/?modal=admin_todo_tour" class="footer__link social__footer__links fb"><i class="fab fa-facebook-f"></i></a>
+            <li class="footer__item"><a href="https://twitter.com/ProjecT__2020" class="footer__link social__footer__links lin"><i class="fab fa-twitter"></i></a>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__end">
+        <div class="footer__heading">
+          Quick Links
+        </div>
+        <ul class="footer__list">
+          <li class="footer__item"><a href="/about_us" class="footer__link footer__footer__links au">About Us</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+    <div class="copyright">
+
+      <span class="copyright__heading">ProjecT</span>
+      <span class="copyright__para">&#169; Copyright</span>
+    </div>
+
+  </section>
+
+
+
+  <!-- footer section over -->
+
+  <script>
+    const openlist = () => {
+      // document.getElementById('list').style.top="78px";
+      // document.getElementById('list').style.transform="scale(1)";
+      document.getElementById('list').style.display = "block";
+      document.getElementById('upward-icon').style.display = "block";
+      document.getElementById('bars-icon').style.display = "none";
+    }
+
+    const closelist = () => {
+      // document.getElementById('list').style.top="-200px";
+      // document.getElementById('list').style.transform="scale(0)";
+      document.getElementById('list').style.display = "none";
+      document.getElementById('upward-icon').style.display = "none";
+      document.getElementById('bars-icon').style.display = "block";
+    }
+
+    const febtn = document.getElementById('feedback');
+
+    const femenu = document.querySelector('.feedback-modal');
+
+    febtn.addEventListener('click',function(){
+      femenu.style.opacity='1';
+      femenu.style.visibility='visible';
+    })
+
+    window.addEventListener('click',function(e2){
+      if(e2.target == femenu){
+          femenu.style.opacity='0';
+          femenu.style.visibility='hidden';
+            }
+        })
+  </script>
+
+
+
+
+
+
+
+</body>
+
+</html>

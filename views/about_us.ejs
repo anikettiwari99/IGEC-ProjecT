@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ProjecT</title>
+  <link rel="stylesheet" href="css/about_us.css">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    <!-- for media query -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="100x100" href="images/favicon1.ico">
+  </head>
+  <body>
+
+
+    <!-- nav section begins************* -->
+    <section class="top-header">
+      <!--display:flex-->
+
+      <div class="logo">
+        <a href="/">ProjecT</a>
+      </div>
+
+      <nav class="nav" id="list">
+
+        <ul class="nav-list">
+          <li class="nav-item"><a href="/" class="nav-links">Home</a></li>
+          <li class="nav-item"><div class="nav-links" id="feedback">Feedback</div></li>
+        </ul>
+      </nav>
+
+      <div class="icon" id="bars-icon" onclick="openlist()">
+        <i class="fas fa-ellipsis-v"></i>
+      </div>
+      <div class="icon upward" id="upward-icon" onclick="closelist()">
+        <i class="fas fa-ellipsis-h"></i>
+      </div>
+    </section>
+
+<!-- header over -->
+
+<!-- Feedback modal -->
+<div class="feedback-modal">
+  <div class="feedback-body">
+    <div class="feedback_heading">
+      <h3>Feedback</h3>
+    </div>
+
+    <form class="feedback-form" action="/feedback" method="POST">
+      <label>Email Id</label>
+      <input class="email-feed" type="email" name="email" required placeholder="Your email">
+        <br>
+      <label class="desc">Comment</label>
+      <textarea class="feed-desc" name="comment" required placeholder="Write here"></textarea>
+      <br>
+
+      <button type="submit" name="button"
+      id="feedback_submit"><i class="fas fa-thumbs-up"></i> Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<section class="team-section">
+   <div class="container">
+       <div class="row">
+           <div class="section-title">
+               <h1>Our Team</h1>
+               <p>You'll Think We'll Help</p>
+           </div>
+       </div>
+       <div class="row">
+           <div class="team-items">
+                <div class="item">
+                    <img src="images/akash.jpg" alt="team" />
+                    <div class="inner">
+                        <div class="info">
+                             <h5>Akash Ahirwar</h5>
+                             <p>CEO</p>
+                             <div class="social-links">
+                                 <a href="mailto:ak4900208@gmail.com?subject= Mail from our website"><i class="fab fa-google"></i></a>
+                                 <a href="https://www.facebook.com/profile.php?id=100010639214333"><i class="fab fa-facebook-f"></i></a>
+                                 <a href="https://www.linkedin.com/mwlite/in/akash-ahirwar-8323b31aa"><i class="fab fa-linkedin-in"></i></a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="images/amol.jpeg" alt="team" />
+                    <div class="inner">
+                        <div class="info">
+                             <h5>Amol Shrivastava</h5>
+                             <p>Front-End Developer</p>
+                             <div class="social-links">
+                               <a href="mailto:amolshrivastava448@gmail.com?subject= Mail from our website"><i class="fab fa-google"></i></a>
+                               <a href="https://www.facebook.com/amol.shrivastava.448"><i class="fab fa-facebook-f"></i></a>
+                               <a href="https://www.linkedin.com/in/amol-shrivastava-6b88731a6/"><i class="fab fa-linkedin-in"></i></a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="images/aniket.jpg" alt="team" />
+                    <div class="inner">
+                        <div class="info">
+                             <h5>Aniket Tiwari</h5>
+                             <p>Back-End Developer</p>
+                             <div class="social-links">
+                               <a href="mailto:anikettiwari177@gmail.com?subject= Mail from our website"><i class="fab fa-google"></i></a>
+                               <a href="https://www.facebook.com/ani.tiwari.99/"><i class="fab fa-facebook-f"></i></a>
+                               <a href="https://www.linkedin.com/in/aniket-tiwari-0b415a159/"><i class="fab fa-linkedin-in"></i></a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="images/deepak.jpg" alt="team" />
+                    <div class="inner">
+                        <div class="info">
+                             <h5>Deepak Badhe</h5>
+                             <p>Front-End Developer</p>
+                             <div class="social-links">
+                               <a href="mailto:deepakbadhe5@gmail.com?subject= Mail from our website"><i class="fab fa-google"></i></a>
+                               <a href="https://www.facebook.com/deepak.badhe.545"><i class="fab fa-facebook-f"></i></a>
+                               <a href="https://www.linkedin.com/in/deepak-badhe-aaa9ab156/"><i class="fab fa-linkedin-in"></i></a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+       </div>
+   </div>
+</section>
+
+
+
+    <script src="js/about_us.js" charset="utf-8"></script>
+  </body>
+</html>
