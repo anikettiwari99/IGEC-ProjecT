@@ -37,7 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-mongoose.connect("mongodb://localhost:27017/newusersDB", {
+mongoose.connect("mongodb+srv://anikettiwari99:<password>@cluster0-r4a27.mongodb.net/test?retryWrites=true&w=majority", {
   useUnifiedTopology: true,
   useNewUrlParser: true
 });
