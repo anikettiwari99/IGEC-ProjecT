@@ -27,7 +27,7 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-      "minimist": ">=0.2.1"
+      "minimist": ">=1.2.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
