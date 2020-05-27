@@ -105,7 +105,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3001/auth/google/afterlogin"
+    callbackURL: "http://ec2-13-233-159-16.ap-south-1.compute.amazonaws.com:5000/auth/google/afterlogin"
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log(profile);
@@ -125,7 +125,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.APP_ID,
     clientSecret: process.env.APP_SECRET,
-    callbackURL: "http://localhost:3001/auth/facebook/afterlogin",
+    callbackURL: "http://ec2-13-233-159-16.ap-south-1.compute.amazonaws.com:5000/auth/facebook/afterlogin",
     profileFields: ['id','displayName','first_name','email']
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -469,6 +469,6 @@ app.post("/login", function(req, res, next) {
   })(req, res, next);
 });
 
-app.listen(3001, function() {
-  console.log("Server is up and running on port 3001");
+app.listen(5000, function() {
+  console.log("Server is up and running on port 5000");
 });
