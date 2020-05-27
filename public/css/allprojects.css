@@ -64,7 +64,7 @@ img {
 .nav {
   /* border:3px solid yellow; */
   position: absolute;
-  top: 47px;
+  top: 40px;
   width: 100%;
   left: 0;
   text-align: center;
@@ -678,7 +678,7 @@ top:-38px;
   }
 }
 
-@media (min-width: 320px) and (max-width: 540px) {
+@media (min-width: 320px) and (max-width: 635px) {
   .desc{
       position:relative;
       top:40px;
@@ -694,7 +694,7 @@ top:-38px;
 
   .feedback-body{
     width:90%;
-    height:55%;
+    height:35%;
   }
 
 }
